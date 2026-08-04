@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="<!-- figma:lang -->">
+  <head>
+    <!-- figma:head-start -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><!-- figma:title --></title>
+    <style>
+      /* Esqueleto de carregamento inicial — CSS puro, não depende do Tailwind ter carregado ainda.
+         Some sozinho assim que o React montar, porque createRoot(...).render() substitui
+         todo o conteúdo de #root, inclusive esse bloco. */
+      @keyframes skeleton-pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.55; }
+      }
+      #initial-skeleton {
+        min-height: 100vh;
+        background: #F4EFE6;
+        display: flex;
+        flex-direction: column;
+      }
+      #initial-skeleton .sk-nav {
+        height: 64px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 24px;
+        border-bottom: 1px solid rgba(200,197,191,0.4);
+      }
+      #initial-skeleton .sk-block {
+        background: rgba(200,197,191,0.5);
+        border-radius: 8px;
+        animation: skeleton-pulse 1.6s ease-in-out infinite;
+      }
+      #initial-skeleton .sk-hero {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px;
+        max-width: 900px;
+        margin: 0 auto;
+        width: 100%;
+        gap: 16px;
+      }
+    </style>
+    <!-- figma:head-end -->
+  </head>
+  <body>
+    <!-- figma:body-start -->
+    <div id="root">
+      <div id="initial-skeleton" aria-hidden="true">
+        <div class="sk-nav">
+          <div class="sk-block" style="width:100px;height:20px;"></div>
+          <div style="display:flex;gap:24px;">
+            <div class="sk-block" style="width:50px;height:14px;"></div>
+            <div class="sk-block" style="width:50px;height:14px;"></div>
+            <div class="sk-block" style="width:60px;height:14px;"></div>
+            <div class="sk-block" style="width:50px;height:14px;"></div>
+          </div>
+        </div>
+        <div class="sk-hero">
+          <div class="sk-block" style="width:220px;height:24px;border-radius:999px;"></div>
+          <div class="sk-block" style="width:90%;height:48px;"></div>
+          <div class="sk-block" style="width:70%;height:48px;"></div>
+          <div class="sk-block" style="width:150px;height:44px;border-radius:12px;margin-top:12px;"></div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.tsx"></script>
+    <!-- figma:body-end -->
+  </body>
+</html>
