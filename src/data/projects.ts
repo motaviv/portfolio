@@ -24,7 +24,10 @@ export type Project = {
   detail: ProjectDetail;
 };
 
-const drive = (id: string) => `https://drive.google.com/uc?export=view&id=${id}`;
+// Fotos agora vivem no próprio repositório (pasta public/images), não mais no Google Drive.
+// Pra trocar/adicionar uma foto: suba o arquivo em public/images/... pelo GitHub e ajuste o
+// caminho aqui, se o nome do arquivo for diferente do padrão usado.
+const cover = (slug: string) => `/images/projects/covers/${slug}.jpg`;
 
 export const projects: Project[] = [
   // ══════════════════════════════════════════
@@ -33,12 +36,9 @@ export const projects: Project[] = [
   {
     slug: "nasa-comunica",
     track: "digital",
-    image: drive("1w5UO4eRRAMN42M4SB5HGMVzN6ON7oXU8"),
+    image: cover("nasa-comunica"),
     title: { pt: "Nasa Comunica", en: "Nasa Comunica" },
-    card: {
-      pt: "Sistema web que deu autonomia ao RH para agendar e disparar comunicados internos no Google Chat sem intermediários.",
-      en: "A web system that gave HR full autonomy to schedule and send internal Google Chat announcements without intermediaries.",
-    },
+    card: { pt: "Sistema web que deu autonomia ao RH para agendar e disparar comunicados internos no Google Chat sem intermediários.", en: "A web system that gave HR full autonomy to schedule and send internal Google Chat announcements without intermediaries." },
     tags: ["Google Apps Script", "WebApp HTML/JS", "Google Sheets", "Google Drive"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -57,25 +57,10 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Arquitetura da Solução & Decisões de Engenharia", en: "Solution Architecture & Engineering Decisions" },
       architecture: [
-        { title: { pt: "WebApp Intuitivo (Interface do Solicitante)", en: "Intuitive WebApp (Requester Interface)" }, bullets: [
-          { pt: "Pré-visualização em tempo real do comunicado antes da confirmação.", en: "Real-time preview of the announcement before confirmation." },
-          { pt: "Formulário com barra de formatação amigável e regras de validação de campos obrigatórios.", en: "Form with a friendly formatting toolbar and validation rules for required fields." },
-        ]},
-        { title: { pt: "Gestão Inteligente de Mídias (Google Drive Engine)", en: "Smart Media Management (Google Drive Engine)" }, bullets: [
-          { pt: "Upload automatizado de imagens e documentos direto para o Drive.", en: "Automated upload of images and documents straight to Drive." },
-          { pt: "Estruturação automática de diretórios por Ano/Mês.", en: "Automatic folder structuring by Year/Month." },
-          { pt: "Nomenclatura padronizada dos arquivos via ID único do comunicado.", en: "Standardized file naming via the announcement's unique ID." },
-          { pt: "Geração de links seguros com permissão de visualização para renderização estável no Chat.", en: "Generation of secure view-only links for stable rendering in Chat." },
-        ]},
-        { title: { pt: "Motor de Agendamento & Disparo (Apps Script + Triggers)", en: "Scheduling & Dispatch Engine (Apps Script + Triggers)" }, bullets: [
-          { pt: "Backend responsável pelo processamento dos status (AGENDADO, ENVIADO, CANCELADO).", en: "Backend responsible for status processing (SCHEDULED, SENT, CANCELED)." },
-          { pt: "Triggers temporizados que disparam automaticamente via Webhook nos espaços de destino.", en: "Time-based triggers that fire automatically via webhook to the target spaces." },
-          { pt: "Cards visuais com imagens como botões clicáveis, garantindo compatibilidade e estética refinada.", en: "Visual cards using images as clickable buttons, ensuring compatibility and a refined look." },
-        ]},
-        { title: { pt: "Banco de Dados & Log de Auditoria (Google Sheets)", en: "Database & Audit Log (Google Sheets)" }, bullets: [
-          { pt: "Registros estruturados como banco de dados relacional leve.", en: "Records structured as a lightweight relational database." },
-          { pt: "Histórico completo: data, hora, solicitante, canal de destino, links e protocolo gerado.", en: "Full history: date, time, requester, target channel, links, and generated protocol number." },
-        ]},
+        { title: { pt: "WebApp Intuitivo (Interface do Solicitante)", en: "Intuitive WebApp (Requester Interface)" }, bullets: [{ pt: "Pré-visualização em tempo real do comunicado antes da confirmação.", en: "Real-time preview of the announcement before confirmation." }, { pt: "Formulário com barra de formatação amigável e regras de validação de campos obrigatórios.", en: "Form with a friendly formatting toolbar and validation rules for required fields." }] },
+        { title: { pt: "Gestão Inteligente de Mídias (Google Drive Engine)", en: "Smart Media Management (Google Drive Engine)" }, bullets: [{ pt: "Upload automatizado de imagens e documentos direto para o Drive.", en: "Automated upload of images and documents straight to Drive." }, { pt: "Estruturação automática de diretórios por Ano/Mês.", en: "Automatic folder structuring by Year/Month." }, { pt: "Nomenclatura padronizada dos arquivos via ID único do comunicado.", en: "Standardized file naming via the announcement's unique ID." }, { pt: "Geração de links seguros com permissão de visualização para renderização estável no Chat.", en: "Generation of secure view-only links for stable rendering in Chat." }] },
+        { title: { pt: "Motor de Agendamento & Disparo (Apps Script + Triggers)", en: "Scheduling & Dispatch Engine (Apps Script + Triggers)" }, bullets: [{ pt: "Backend responsável pelo processamento dos status (AGENDADO, ENVIADO, CANCELADO).", en: "Backend responsible for status processing (SCHEDULED, SENT, CANCELED)." }, { pt: "Triggers temporizados que disparam automaticamente via Webhook nos espaços de destino.", en: "Time-based triggers that fire automatically via webhook to the target spaces." }, { pt: "Cards visuais com imagens como botões clicáveis, garantindo compatibilidade e estética refinada.", en: "Visual cards using images as clickable buttons, ensuring compatibility and a refined look." }] },
+        { title: { pt: "Banco de Dados & Log de Auditoria (Google Sheets)", en: "Database & Audit Log (Google Sheets)" }, bullets: [{ pt: "Registros estruturados como banco de dados relacional leve.", en: "Records structured as a lightweight relational database." }, { pt: "Histórico completo: data, hora, solicitante, canal de destino, links e protocolo gerado.", en: "Full history: date, time, requester, target channel, links, and generated protocol number." }] },
       ],
       impactLabel: { pt: "Impacto de Governança & Ganhos Qualitativos", en: "Governance Impact & Qualitative Gains" },
       impact: [
@@ -89,12 +74,9 @@ export const projects: Project[] = [
   {
     slug: "automacao-atas-reunioes-ia",
     track: "digital",
-    image: drive("1bO73-RHptDdGyxp1VjAB2FhlCVUt8Ri0"),
+    image: cover("automacao-atas-reunioes-ia"),
     title: { pt: "Automação de Atas, Pautas e Resumos Executivos com IA", en: "AI-Powered Meeting Minutes, Agenda & Executive Summary Automation" },
-    card: {
-      pt: "Fluxo inteligente que transforma gravações de reuniões em atas padronizadas e agendamentos no Google Calendar em minutos.",
-      en: "A smart workflow that turns meeting recordings into standardized minutes and Google Calendar bookings in minutes.",
-    },
+    card: { pt: "Fluxo inteligente que transforma gravações de reuniões em atas padronizadas e agendamentos no Google Calendar em minutos.", en: "A smart workflow that turns meeting recordings into standardized minutes and Google Calendar bookings in minutes." },
     tags: ["Claude IA", "Google Apps Script", "Google Workspace", "Google Calendar"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -113,21 +95,9 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Arquitetura da Solução & Decisões de Engenharia", en: "Solution Architecture & Engineering Decisions" },
       architecture: [
-        { title: { pt: "Processamento de Linguagem Natural (Claude Project)", en: "Natural Language Processing (Claude Project)" }, bullets: [
-          { pt: "Ingestão do link/arquivo da transcrição bruta do Google Meet no ambiente do Claude.", en: "Ingestion of the raw Google Meet transcript link/file into the Claude environment." },
-          { pt: "Prompt engineering pra sintetizar o conteúdo e gerar um Google Docs padronizado.", en: "Prompt engineering to synthesize the content and generate a standardized Google Doc." },
-          { pt: "Marcadores obrigatórios no documento: === RESUMO (CHAT) === e === PAUTA (CALENDAR) ===.", en: "Mandatory markers in the document: === SUMMARY (CHAT) === and === AGENDA (CALENDAR) ===." },
-        ]},
-        { title: { pt: "Distribuição Automatizada (Google Apps Script)", en: "Automated Distribution (Google Apps Script)" }, bullets: [
-          { pt: "Leitura periódica da pasta do Drive pra identificar novos documentos prontos.", en: "Periodic scan of the Drive folder to identify newly ready documents." },
-          { pt: "Trava contra leitura parcial, exigindo os marcadores obrigatórios pra garantir integridade.", en: "Safeguard against partial reads, requiring the mandatory markers to ensure integrity." },
-          { pt: "Disparo automatizado do resumo formatado via Webhook pro Chat/e-mail.", en: "Automated dispatch of the formatted summary via webhook to Chat/email." },
-        ]},
-        { title: { pt: "Governança & Log de Mitigação de Duplicidade (Google Sheets)", en: "Governance & Duplicate-Prevention Log (Google Sheets)" }, bullets: [
-          { pt: "Configuração centralizada em planilha-matriz com mapeamento de pastas, IDs e webhooks.", en: "Centralized configuration in a master sheet mapping folders, IDs, and webhooks." },
-          { pt: "Log de processamento com trava de segurança contra notificação duplicada.", en: "Processing log with a safeguard against duplicate notifications." },
-          { pt: "Reprocessamento automático em caso de falhas temporárias de conexão.", en: "Automatic reprocessing in case of temporary connection failures." },
-        ]},
+        { title: { pt: "Processamento de Linguagem Natural (Claude Project)", en: "Natural Language Processing (Claude Project)" }, bullets: [{ pt: "Ingestão do link/arquivo da transcrição bruta do Google Meet no ambiente do Claude.", en: "Ingestion of the raw Google Meet transcript link/file into the Claude environment." }, { pt: "Prompt engineering pra sintetizar o conteúdo e gerar um Google Docs padronizado.", en: "Prompt engineering to synthesize the content and generate a standardized Google Doc." }, { pt: "Marcadores obrigatórios no documento: === RESUMO (CHAT) === e === PAUTA (CALENDAR) ===.", en: "Mandatory markers in the document: === SUMMARY (CHAT) === and === AGENDA (CALENDAR) ===." }] },
+        { title: { pt: "Distribuição Automatizada (Google Apps Script)", en: "Automated Distribution (Google Apps Script)" }, bullets: [{ pt: "Leitura periódica da pasta do Drive pra identificar novos documentos prontos.", en: "Periodic scan of the Drive folder to identify newly ready documents." }, { pt: "Trava contra leitura parcial, exigindo os marcadores obrigatórios pra garantir integridade.", en: "Safeguard against partial reads, requiring the mandatory markers to ensure integrity." }, { pt: "Disparo automatizado do resumo formatado via Webhook pro Chat/e-mail.", en: "Automated dispatch of the formatted summary via webhook to Chat/email." }] },
+        { title: { pt: "Governança & Log de Mitigação de Duplicidade (Google Sheets)", en: "Governance & Duplicate-Prevention Log (Google Sheets)" }, bullets: [{ pt: "Configuração centralizada em planilha-matriz com mapeamento de pastas, IDs e webhooks.", en: "Centralized configuration in a master sheet mapping folders, IDs, and webhooks." }, { pt: "Log de processamento com trava de segurança contra notificação duplicada.", en: "Processing log with a safeguard against duplicate notifications." }, { pt: "Reprocessamento automático em caso de falhas temporárias de conexão.", en: "Automatic reprocessing in case of temporary connection failures." }] },
       ],
       impactLabel: { pt: "Impacto de Governança & Ganhos Qualitativos", en: "Governance Impact & Qualitative Gains" },
       impact: [
@@ -141,12 +111,9 @@ export const projects: Project[] = [
   {
     slug: "reorganizacao-intranet",
     track: "digital",
-    image: drive("1WCyAq40TyNNG6rmhI6wFswIG7swCxqWr"),
+    image: cover("reorganizacao-intranet"),
     title: { pt: "Reorganização do Portal do Funcionário & FAQ RH Responde", en: "Employee Portal Reorganization & 'HR Responde' FAQ Assistant" },
-    card: {
-      pt: "Reestruturação da intranet corporativa em dois ambientes navegáveis, com assistente virtual de autoatendimento integrado.",
-      en: "A restructuring of the corporate intranet into two navigable environments, with an integrated self-service virtual assistant.",
-    },
+    card: { pt: "Reestruturação da intranet corporativa em dois ambientes navegáveis, com assistente virtual de autoatendimento integrado.", en: "A restructuring of the corporate intranet into two navigable environments, with an integrated self-service virtual assistant." },
     tags: ["Google Apps Script", "iFrames", "LLM com Guardrails", "Employee Experience"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -166,25 +133,10 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Arquitetura da Solução & Decisões de Engenharia", en: "Solution Architecture & Engineering Decisions" },
       architecture: [
-        { title: { pt: "Engenharia de Navegação por Contorno (iFrames + WebApps)", en: "Workaround Navigation Engineering (iFrames + WebApps)" }, bullets: [
-          { pt: "Aplicações web construídas em WebApps (Apps Script + HTML/CSS/JS).", en: "Web applications built as WebApps (Apps Script + HTML/CSS/JS)." },
-          { pt: "Hospedagem direta dentro das páginas da intranet via iframe, navegação fluida numa única tela.", en: "Hosted directly inside the intranet pages via iframe, for fluid navigation on a single screen." },
-        ]},
-        { title: { pt: "Ambiente 01 — Qualidade", en: "Environment 01 — Quality" }, bullets: [
-          { pt: "Centralização de todos os manuais de operação da empresa.", en: "Centralization of all of the company's operating manuals." },
-          { pt: "Trilhas de procedimentos e glossário corporativo unificado.", en: "Procedure tracks and a unified corporate glossary." },
-          { pt: "Canal direto de solicitação de demandas para o DP.", en: "Direct request channel to People Operations." },
-        ]},
-        { title: { pt: "Ambiente 02 — Navegando pelo RH", en: "Environment 02 — Navigating HR" }, bullets: [
-          { pt: "Organograma institucional e inventário de canais de comunicação oficial.", en: "Institutional org chart and an inventory of official communication channels." },
-          { pt: "Hubs de benefícios, políticas corporativas e guias práticos.", en: "Benefits hubs, corporate policies, and practical guides." },
-          { pt: "Módulo de Cultura do Reconhecimento e formulários de solicitação diversos.", en: "Recognition Culture module and various request forms." },
-          { pt: "Ambiente de onboarding e ponto de acesso ao assistente virtual RH Responde.", en: "Onboarding environment and access point to the HR Responde virtual assistant." },
-        ]},
-        { title: { pt: "Assistente Virtual RH Responde", en: "HR Responde Virtual Assistant" }, bullets: [
-          { pt: "Inteligência alimentada estritamente por bases oficiais, com guardrails rígidos contra respostas sem respaldo documental.", en: "Intelligence fed strictly by official sources, with strict guardrails against answers lacking documented backing." },
-          { pt: "Tom objetivo, com indicação da fonte consultada e direcionamento pra atendimento humano em casos individuais.", en: "Objective tone, citing the source consulted, and routing to human support for individual cases." },
-        ]},
+        { title: { pt: "Engenharia de Navegação por Contorno (iFrames + WebApps)", en: "Workaround Navigation Engineering (iFrames + WebApps)" }, bullets: [{ pt: "Aplicações web construídas em WebApps (Apps Script + HTML/CSS/JS).", en: "Web applications built as WebApps (Apps Script + HTML/CSS/JS)." }, { pt: "Hospedagem direta dentro das páginas da intranet via iframe, navegação fluida numa única tela.", en: "Hosted directly inside the intranet pages via iframe, for fluid navigation on a single screen." }] },
+        { title: { pt: "Ambiente 01 — Qualidade", en: "Environment 01 — Quality" }, bullets: [{ pt: "Centralização de todos os manuais de operação da empresa.", en: "Centralization of all of the company's operating manuals." }, { pt: "Trilhas de procedimentos e glossário corporativo unificado.", en: "Procedure tracks and a unified corporate glossary." }, { pt: "Canal direto de solicitação de demandas para o DP.", en: "Direct request channel to People Operations." }] },
+        { title: { pt: "Ambiente 02 — Navegando pelo RH", en: "Environment 02 — Navigating HR" }, bullets: [{ pt: "Organograma institucional e inventário de canais de comunicação oficial.", en: "Institutional org chart and an inventory of official communication channels." }, { pt: "Hubs de benefícios, políticas corporativas e guias práticos.", en: "Benefits hubs, corporate policies, and practical guides." }, { pt: "Módulo de Cultura do Reconhecimento e formulários de solicitação diversos.", en: "Recognition Culture module and various request forms." }, { pt: "Ambiente de onboarding e ponto de acesso ao assistente virtual RH Responde.", en: "Onboarding environment and access point to the HR Responde virtual assistant." }] },
+        { title: { pt: "Assistente Virtual RH Responde", en: "HR Responde Virtual Assistant" }, bullets: [{ pt: "Inteligência alimentada estritamente por bases oficiais, com guardrails rígidos contra respostas sem respaldo documental.", en: "Intelligence fed strictly by official sources, with strict guardrails against answers lacking documented backing." }, { pt: "Tom objetivo, com indicação da fonte consultada e direcionamento pra atendimento humano em casos individuais.", en: "Objective tone, citing the source consulted, and routing to human support for individual cases." }] },
       ],
       impactLabel: { pt: "Impacto de Governança & Ganhos Qualitativos", en: "Governance Impact & Qualitative Gains" },
       impact: [
@@ -198,12 +150,9 @@ export const projects: Project[] = [
   {
     slug: "portal-gestao-canais-comunicacao",
     track: "digital",
-    image: drive("1IxjWyZhqTTOphVy6VeEDe6P8yA6iJJ6X"),
+    image: cover("portal-gestao-canais-comunicacao"),
     title: { pt: "Portal de Gestão de Canais de Comunicação (RBAC & Governança de Dados)", en: "Communication Channels Management Portal (RBAC & Data Governance)" },
-    card: {
-      pt: "Interface de gestão que protege o banco de dados oficial contra edições acidentais e garante governança de acessos.",
-      en: "A management interface that protects the official database from accidental edits and ensures access governance.",
-    },
+    card: { pt: "Interface de gestão que protege o banco de dados oficial contra edições acidentais e garante governança de acessos.", en: "A management interface that protects the official database from accidental edits and ensures access governance." },
     tags: ["HTML/CSS/JS", "Google Apps Script", "Google Sheets", "RBAC"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -222,22 +171,10 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Arquitetura da Solução & Decisões de Engenharia", en: "Solution Architecture & Engineering Decisions" },
       architecture: [
-        { title: { pt: "Camada de Interface & Experiência de Uso (Portal Web Frontend)", en: "Interface Layer & User Experience (Web Portal Frontend)" }, bullets: [
-          { pt: "Interface dinâmica organizada na hierarquia: Área → Subárea → Frente → Canal.", en: "Dynamic interface organized in a hierarchy: Area → Sub-area → Front → Channel." },
-          { pt: "Formulários intuitivos que substituem a navegação por linhas/colunas, exigindo confirmação pra ações críticas.", en: "Intuitive forms replacing row/column navigation, requiring confirmation for critical actions." },
-          { pt: "Identificadores únicos (ID) por canal, eliminando a dependência do número de linha da planilha.", en: "Unique IDs per channel, removing dependency on the spreadsheet's row number." },
-        ]},
-        { title: { pt: "Controle de Acessos por Perfil e Escopo (RBAC)", en: "Role- and Scope-Based Access Control (RBAC)" }, bullets: [
-          { pt: "Módulo de segurança com níveis rígidos: Administrador (gestão total), Gestor (área responsável) e Editor (subáreas autorizadas).", en: "Security module with strict tiers: Administrator (full management), Manager (their own area), and Editor (authorized sub-areas only)." },
-        ]},
-        { title: { pt: "Motor de Validação & Publicação (Backend Apps Script)", en: "Validation & Publishing Engine (Apps Script Backend)" }, bullets: [
-          { pt: "Separação estrita entre abas de trabalho das áreas e a aba oficial BASE_CANAIS.", en: "Strict separation between teams' working sheets and the official BASE_CANAIS sheet." },
-          { pt: "Regra de ouro: só registros ATIVOS, PUBLICADOS e VALIDADOS são replicados pra base consumida pelo Portal do Funcionário.", en: "Golden rule: only ACTIVE, PUBLISHED, and VALIDATED records are replicated to the database consumed by the Employee Portal." },
-          { pt: "Bloqueio contra edição manual direta na aba principal.", en: "Block against direct manual edits to the main sheet." },
-        ]},
-        { title: { pt: "Módulo de Auditoria & Trilha de Logs (LOG_ALTERACOES)", en: "Audit Module & Log Trail (LOG_ALTERACOES)" }, bullets: [
-          { pt: "Gravação automática e imutável de todas as transações: e-mail do usuário, data, hora, ação e valores antes/depois.", en: "Automatic, immutable logging of every transaction: user email, date, time, action, and before/after values." },
-        ]},
+        { title: { pt: "Camada de Interface & Experiência de Uso (Portal Web Frontend)", en: "Interface Layer & User Experience (Web Portal Frontend)" }, bullets: [{ pt: "Interface dinâmica organizada na hierarquia: Área → Subárea → Frente → Canal.", en: "Dynamic interface organized in a hierarchy: Area → Sub-area → Front → Channel." }, { pt: "Formulários intuitivos que substituem a navegação por linhas/colunas, exigindo confirmação pra ações críticas.", en: "Intuitive forms replacing row/column navigation, requiring confirmation for critical actions." }, { pt: "Identificadores únicos (ID) por canal, eliminando a dependência do número de linha da planilha.", en: "Unique IDs per channel, removing dependency on the spreadsheet's row number." }] },
+        { title: { pt: "Controle de Acessos por Perfil e Escopo (RBAC)", en: "Role- and Scope-Based Access Control (RBAC)" }, bullets: [{ pt: "Módulo de segurança com níveis rígidos: Administrador (gestão total), Gestor (área responsável) e Editor (subáreas autorizadas).", en: "Security module with strict tiers: Administrator (full management), Manager (their own area), and Editor (authorized sub-areas only)." }] },
+        { title: { pt: "Motor de Validação & Publicação (Backend Apps Script)", en: "Validation & Publishing Engine (Apps Script Backend)" }, bullets: [{ pt: "Separação estrita entre abas de trabalho das áreas e a aba oficial BASE_CANAIS.", en: "Strict separation between teams' working sheets and the official BASE_CANAIS sheet." }, { pt: "Regra de ouro: só registros ATIVOS, PUBLICADOS e VALIDADOS são replicados pra base consumida pelo Portal do Funcionário.", en: "Golden rule: only ACTIVE, PUBLISHED, and VALIDATED records are replicated to the database consumed by the Employee Portal." }, { pt: "Bloqueio contra edição manual direta na aba principal.", en: "Block against direct manual edits to the main sheet." }] },
+        { title: { pt: "Módulo de Auditoria & Trilha de Logs (LOG_ALTERACOES)", en: "Audit Module & Log Trail (LOG_ALTERACOES)" }, bullets: [{ pt: "Gravação automática e imutável de todas as transações: e-mail do usuário, data, hora, ação e valores antes/depois.", en: "Automatic, immutable logging of every transaction: user email, date, time, action, and before/after values." }] },
       ],
       impactLabel: { pt: "Impacto de Governança & Ganhos Qualitativos", en: "Governance Impact & Qualitative Gains" },
       impact: [
@@ -251,12 +188,9 @@ export const projects: Project[] = [
   {
     slug: "galeria-digital-produtos",
     track: "digital",
-    image: drive("17p1RdCtAlffnmPrkVmmAcDbBW-NDWrEb"),
+    image: cover("galeria-digital-produtos"),
     title: { pt: "Vitrine Virtual & Galeria Digital de Produtos", en: "Virtual Showcase & Digital Product Gallery" },
-    card: {
-      pt: "Vitrine interativa desenvolvida para facilitar a visualização de produtos de construção e agilizar o atendimento comercial.",
-      en: "An interactive showcase built to make construction products easier to visualize and speed up sales support.",
-    },
+    card: { pt: "Vitrine interativa desenvolvida para facilitar a visualização de produtos de construção e agilizar o atendimento comercial.", en: "An interactive showcase built to make construction products easier to visualize and speed up sales support." },
     tags: ["Design de Serviços", "Catálogo Digital", "WhatsApp Business"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -274,18 +208,9 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Arquitetura da Solução & Decisões de Design", en: "Solution Architecture & Design Decisions" },
       architecture: [
-        { title: { pt: "Estruturação do Catálogo Interativo", en: "Interactive Catalog Structure" }, bullets: [
-          { pt: "Organização sistemática do portfólio por categorias (Revestimentos, Pisos, Elementos Vazados, Drenantes).", en: "Systematic portfolio organization by category (Finishes, Flooring, Openwork Elements, Drainage)." },
-          { pt: "Ficha técnica clara por peça: dimensões, peso aproximado, rendimento por m² e código de referência.", en: "Clear spec sheet per piece: dimensions, approximate weight, yield per m², and reference code." },
-        ]},
-        { title: { pt: "Experiência de Navegação Fluida (UX/UI)", en: "Fluid Navigation Experience (UX/UI)" }, bullets: [
-          { pt: "Apresentação visual focada na aplicação real do produto em projetos arquitetônicos.", en: "Visual presentation focused on real-world use of the product in architectural projects." },
-          { pt: "Navegação intuitiva entre a visualização do produto isolado e fotos da peça instalada.", en: "Intuitive navigation between the standalone product view and photos of the installed piece." },
-        ]},
-        { title: { pt: "Pontes de Conversão Direta (CTAs de Vendas)", en: "Direct Conversion Bridges (Sales CTAs)" }, bullets: [
-          { pt: "Botões estratégicos (\"Contate-nos\", \"Quero Conhecer o Catálogo\") direcionando ao WhatsApp.", en: "Strategic buttons (\"Contact Us\", \"View the Catalog\") routing straight to WhatsApp." },
-          { pt: "Pré-preenchimento das informações do produto de interesse na mensagem, agilizando o suporte.", en: "Pre-filled product info in the message, speeding up sales support." },
-        ]},
+        { title: { pt: "Estruturação do Catálogo Interativo", en: "Interactive Catalog Structure" }, bullets: [{ pt: "Organização sistemática do portfólio por categorias (Revestimentos, Pisos, Elementos Vazados, Drenantes).", en: "Systematic portfolio organization by category (Finishes, Flooring, Openwork Elements, Drainage)." }, { pt: "Ficha técnica clara por peça: dimensões, peso aproximado, rendimento por m² e código de referência.", en: "Clear spec sheet per piece: dimensions, approximate weight, yield per m², and reference code." }] },
+        { title: { pt: "Experiência de Navegação Fluida (UX/UI)", en: "Fluid Navigation Experience (UX/UI)" }, bullets: [{ pt: "Apresentação visual focada na aplicação real do produto em projetos arquitetônicos.", en: "Visual presentation focused on real-world use of the product in architectural projects." }, { pt: "Navegação intuitiva entre a visualização do produto isolado e fotos da peça instalada.", en: "Intuitive navigation between the standalone product view and photos of the installed piece." }] },
+        { title: { pt: "Pontes de Conversão Direta (CTAs de Vendas)", en: "Direct Conversion Bridges (Sales CTAs)" }, bullets: [{ pt: "Botões estratégicos (\"Contate-nos\", \"Quero Conhecer o Catálogo\") direcionando ao WhatsApp.", en: "Strategic buttons (\"Contact Us\", \"View the Catalog\") routing straight to WhatsApp." }, { pt: "Pré-preenchimento das informações do produto de interesse na mensagem, agilizando o suporte.", en: "Pre-filled product info in the message, speeding up sales support." }] },
       ],
       impactLabel: { pt: "Impacto de Governança & Ganhos Qualitativos", en: "Governance Impact & Qualitative Gains" },
       impact: [
@@ -298,12 +223,9 @@ export const projects: Project[] = [
   {
     slug: "sistema-qr-code-vendas",
     track: "digital",
-    image: drive("1qG-wvgR33MYmCBUllLZYBrsL6ek8iVJp"),
+    image: cover("sistema-qr-code-vendas"),
     title: { pt: "Sistema Phygital de Representação, QR Code & Vendas", en: "Phygital Sales, QR Code & Rep Tracking System" },
-    card: {
-      pt: "Integração entre exposição física e catálogo digital para controle de vendas, estoque e comissionamento.",
-      en: "Integration between physical displays and a digital catalog for sales, inventory, and commission control.",
-    },
+    card: { pt: "Integração entre exposição física e catálogo digital para controle de vendas, estoque e comissionamento.", en: "Integration between physical displays and a digital catalog for sales, inventory, and commission control." },
     tags: ["QR Code", "Phygital", "Gestão Comercial"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -321,18 +243,9 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Arquitetura da Solução & Decisões de Engenharia", en: "Solution Architecture & Engineering Decisions" },
       architecture: [
-        { title: { pt: "Pontos de Acesso Físicos (Placas & QR Codes)", en: "Physical Access Points (Plaques & QR Codes)" }, bullets: [
-          { pt: "Placas com QR Codes exclusivos ao lado de cada peça exposta.", en: "Plaques with dedicated QR codes next to each displayed piece." },
-          { pt: "Escaneamento direciona instantaneamente à página específica do produto.", en: "Scanning routes instantly to the specific product page." },
-        ]},
-        { title: { pt: "Parametrização & Rastreabilidade do Representante", en: "Parameterization & Rep Traceability" }, bullets: [
-          { pt: "URLs com identificadores do produto e do representante local (ex: .../peca?rep=NOME).", en: "URLs carrying product and local rep identifiers (e.g. .../piece?rep=NAME)." },
-          { pt: "Atribuição de origem preservada durante toda a navegação do cliente.", en: "Origin attribution preserved throughout the customer's entire browsing session." },
-        ]},
-        { title: { pt: "Automação de Mensagem de Atendimento Comercial", en: "Sales Message Automation" }, bullets: [
-          { pt: "Botão de contato gera mensagem pré-formatada no WhatsApp com nome/código do produto e representante responsável.", en: "Contact button generates a pre-formatted WhatsApp message with the product name/code and the responsible rep." },
-          { pt: "Time de vendas calcula a comissão correta e alinha logística/estoque estratégico.", en: "Sales team calculates the correct commission and aligns strategic logistics/inventory." },
-        ]},
+        { title: { pt: "Pontos de Acesso Físicos (Placas & QR Codes)", en: "Physical Access Points (Plaques & QR Codes)" }, bullets: [{ pt: "Placas com QR Codes exclusivos ao lado de cada peça exposta.", en: "Plaques with dedicated QR codes next to each displayed piece." }, { pt: "Escaneamento direciona instantaneamente à página específica do produto.", en: "Scanning routes instantly to the specific product page." }] },
+        { title: { pt: "Parametrização & Rastreabilidade do Representante", en: "Parameterization & Rep Traceability" }, bullets: [{ pt: "URLs com identificadores do produto e do representante local (ex: .../peca?rep=NOME).", en: "URLs carrying product and local rep identifiers (e.g. .../piece?rep=NAME)." }, { pt: "Atribuição de origem preservada durante toda a navegação do cliente.", en: "Origin attribution preserved throughout the customer's entire browsing session." }] },
+        { title: { pt: "Automação de Mensagem de Atendimento Comercial", en: "Sales Message Automation" }, bullets: [{ pt: "Botão de contato gera mensagem pré-formatada no WhatsApp com nome/código do produto e representante responsável.", en: "Contact button generates a pre-formatted WhatsApp message with the product name/code and the responsible rep." }, { pt: "Time de vendas calcula a comissão correta e alinha logística/estoque estratégico.", en: "Sales team calculates the correct commission and aligns strategic logistics/inventory." }] },
       ],
       impactLabel: { pt: "Impacto de Governança & Ganhos Qualitativos", en: "Governance Impact & Qualitative Gains" },
       impact: [
@@ -349,12 +262,9 @@ export const projects: Project[] = [
   {
     slug: "enfrentamento-violencia-mulher",
     track: "social",
-    image: drive("19cXGip2eozm-UWkZZ8Z9QAb7iG0PSICW"),
+    image: cover("enfrentamento-violencia-mulher"),
     title: { pt: "Entre a Norma e o Chão da Resistência: Enfrentamento à Violência de Gênero em Duque de Caxias", en: "Between the Norm and the Ground of Resistance: Confronting Gender-Based Violence in Duque de Caxias" },
-    card: {
-      pt: "Análise crítica das redes públicas e comunitárias de acolhimento a mulheres sob a perspectiva da interseccionalidade.",
-      en: "A critical analysis of public and community support networks for women, through an intersectional lens.",
-    },
+    card: { pt: "Análise crítica das redes públicas e comunitárias de acolhimento a mulheres sob a perspectiva da interseccionalidade.", en: "A critical analysis of public and community support networks for women, through an intersectional lens." },
     tags: ["Psicologia Crítica", "Interseccionalidade", "Políticas Públicas"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -372,15 +282,8 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Metodologia & Estruturação de Campo", en: "Methodology & Field Structure" },
       architecture: [
-        { title: { pt: "Eixo I — O Chão da Resistência (Movimento Olga Benario)", en: "Axis I — The Ground of Resistance (Olga Benario Movement)" }, bullets: [
-          { pt: "Mapeamento da atuação e aproximação crítica com as militantes do movimento.", en: "Mapping of the movement's work and a critical engagement with its activists." },
-          { pt: "Compreensão das estratégias de acolhimento popular e articulação de rede independente.", en: "Understanding of grassroots care strategies and independent network-building." },
-          { pt: "Apreensão da crítica política ao aparato estatal e sua lentidão/insuficiência.", en: "Grasp of the movement's political critique of the state apparatus and its slowness/insufficiency." },
-        ]},
-        { title: { pt: "Eixo II — A Norma (Diagnóstico e Escuta no CEAM)", en: "Axis II — The Norm (Diagnosis and Listening at CEAM)" }, bullets: [
-          { pt: "Mapeamento territorial e observação participante no Centro Especializado de Atendimento à Mulher.", en: "Territorial mapping and participant observation at the Specialized Women's Support Center." },
-          { pt: "Roteiro técnico semiestruturado de 23 questões à equipe multidisciplinar, investigando fluxos e articulação intersetorial (DEAM, abrigos, saúde).", en: "A 23-question semi-structured technical interview with the multidisciplinary team, investigating workflows and cross-sector coordination (DEAM, shelters, health services)." },
-        ]},
+        { title: { pt: "Eixo I — O Chão da Resistência (Movimento Olga Benario)", en: "Axis I — The Ground of Resistance (Olga Benario Movement)" }, bullets: [{ pt: "Mapeamento da atuação e aproximação crítica com as militantes do movimento.", en: "Mapping of the movement's work and a critical engagement with its activists." }, { pt: "Compreensão das estratégias de acolhimento popular e articulação de rede independente.", en: "Understanding of grassroots care strategies and independent network-building." }, { pt: "Apreensão da crítica política ao aparato estatal e sua lentidão/insuficiência.", en: "Grasp of the movement's political critique of the state apparatus and its slowness/insufficiency." }] },
+        { title: { pt: "Eixo II — A Norma (Diagnóstico e Escuta no CEAM)", en: "Axis II — The Norm (Diagnosis and Listening at CEAM)" }, bullets: [{ pt: "Mapeamento territorial e observação participante no Centro Especializado de Atendimento à Mulher.", en: "Territorial mapping and participant observation at the Specialized Women's Support Center." }, { pt: "Roteiro técnico semiestruturado de 23 questões à equipe multidisciplinar, investigando fluxos e articulação intersetorial (DEAM, abrigos, saúde).", en: "A 23-question semi-structured technical interview with the multidisciplinary team, investigating workflows and cross-sector coordination (DEAM, shelters, health services)." }] },
       ],
       impactLabel: { pt: "Impacto Acadêmico-Social & Contribuição Técnica", en: "Academic-Social Impact & Technical Contribution" },
       impact: [
@@ -393,21 +296,18 @@ export const projects: Project[] = [
   {
     slug: "oficina-aproveitamento-alimentos",
     track: "social",
-    image: drive("1JpECu3r9RyLK18ptZiE7TKdUs0nh3B9z"),
+    image: cover("oficina-aproveitamento-alimentos"),
     gallery: [
-      drive("1-zcujdQji2FE9jpEr1tPJksCB8wUwcTi"),
-      drive("1KujVlX3cdM9RT7WeaAcU5c20zdTLUnCs"),
-      drive("1esdizvWQT8dacYQyrG0UMJi10v5JkT9H"),
-      drive("1DT8t_-c_vy_m19cJJpRrkxCoffV8Q2GN"),
-      drive("1HPnHaYZjNvowo8VCF-T-4zUb7qjK_c47"),
-      drive("18CcWkjlNWiDTrERTX6q9VTdYcgcnDvAH"),
-      drive("1fc9FXJm7YlfkO6SAhNnEJT6C309Qn95c"),
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/01.jpg",
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/02.jpg",
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/03.jpg",
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/04.jpg",
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/05.jpg",
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/06.jpg",
+      "/images/projects/gallery/oficina-aproveitamento-alimentos/07.jpg",
     ],
     title: { pt: "Aproveitamento Integral de Alimentos: Uma Intervenção sobre Hábitos Alimentares e Consumo Consciente", en: "Whole-Food Use: An Intervention on Eating Habits and Conscious Consumption" },
-    card: {
-      pt: "Intervenção comunitária na Baixada Fluminense focada em educação alimentar, sustentabilidade e redução de desperdício.",
-      en: "A community intervention in Baixada Fluminense focused on food education, sustainability, and waste reduction.",
-    },
+    card: { pt: "Intervenção comunitária na Baixada Fluminense focada em educação alimentar, sustentabilidade e redução de desperdício.", en: "A community intervention in Baixada Fluminense focused on food education, sustainability, and waste reduction." },
     tags: ["Extensão Universitária", "Segurança Alimentar", "Sustentabilidade"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -425,17 +325,9 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Metodologia & Desenvolvimento da Oficina", en: "Methodology & Workshop Development" },
       architecture: [
-        { title: { pt: "Diagnóstico e Planejamento Participativo", en: "Diagnosis and Participatory Planning" }, bullets: [
-          { pt: "Mapeamento de hábitos de consumo e compras das famílias do Parque Lafaiete.", en: "Mapping of shopping and consumption habits among families in Parque Lafaiete." },
-          { pt: "Seleção de receitas acessíveis com insumos do cotidiano (farinha de casca, doce de talo, sucos funcionais).", en: "Selection of accessible recipes using everyday ingredients (peel flour, stem preserves, functional juices)." },
-        ]},
-        { title: { pt: "Aplicação Prática da Oficina Comunitária", en: "Hands-On Community Workshop" }, bullets: [
-          { pt: "Rodas de discussão e demonstrações práticas sobre higienização, conservação e preparo.", en: "Discussion circles and hands-on demonstrations on cleaning, storage, and preparation." },
-          { pt: "Abordagem simplificada de Segurança Alimentar, Consumo Consciente e Economia Doméstica.", en: "A simplified approach to Food Security, Conscious Consumption, and Household Economics." },
-        ]},
-        { title: { pt: "Alinhamento aos ODS (ONU)", en: "Alignment with UN SDGs" }, bullets: [
-          { pt: "Erradicação da Pobreza (ODS 1), Fome Zero e Agricultura Sustentável (ODS 2), Consumo e Produção Responsáveis (ODS 12).", en: "No Poverty (SDG 1), Zero Hunger (SDG 2), and Responsible Consumption and Production (SDG 12)." },
-        ]},
+        { title: { pt: "Diagnóstico e Planejamento Participativo", en: "Diagnosis and Participatory Planning" }, bullets: [{ pt: "Mapeamento de hábitos de consumo e compras das famílias do Parque Lafaiete.", en: "Mapping of shopping and consumption habits among families in Parque Lafaiete." }, { pt: "Seleção de receitas acessíveis com insumos do cotidiano (farinha de casca, doce de talo, sucos funcionais).", en: "Selection of accessible recipes using everyday ingredients (peel flour, stem preserves, functional juices)." }] },
+        { title: { pt: "Aplicação Prática da Oficina Comunitária", en: "Hands-On Community Workshop" }, bullets: [{ pt: "Rodas de discussão e demonstrações práticas sobre higienização, conservação e preparo.", en: "Discussion circles and hands-on demonstrations on cleaning, storage, and preparation." }, { pt: "Abordagem simplificada de Segurança Alimentar, Consumo Consciente e Economia Doméstica.", en: "A simplified approach to Food Security, Conscious Consumption, and Household Economics." }] },
+        { title: { pt: "Alinhamento aos ODS (ONU)", en: "Alignment with UN SDGs" }, bullets: [{ pt: "Erradicação da Pobreza (ODS 1), Fome Zero e Agricultura Sustentável (ODS 2), Consumo e Produção Responsáveis (ODS 12).", en: "No Poverty (SDG 1), Zero Hunger (SDG 2), and Responsible Consumption and Production (SDG 12)." }] },
       ],
       impactLabel: { pt: "Impacto Socioambiental & Ganhos Comunitários", en: "Socio-Environmental Impact & Community Gains" },
       impact: [
@@ -448,12 +340,9 @@ export const projects: Project[] = [
   {
     slug: "inclusao-criancas-neuroatipicas",
     track: "social",
-    image: drive("1c-8MJMQJ0-ORvu7WZ_wHK-cNj5EjCPp5"),
+    image: cover("inclusao-criancas-neuroatipicas"),
     title: { pt: "Inclusão de Crianças Neuroatípicas no Ambiente Escolar", en: "Inclusion of Neurodivergent Children in the School Environment" },
-    card: {
-      pt: "Estudo de campo sobre adaptação curricular e práticas inclusivas reais em uma instituição de ensino regional.",
-      en: "A field study on curriculum adaptation and real inclusive practices in a regional school.",
-    },
+    card: { pt: "Estudo de campo sobre adaptação curricular e práticas inclusivas reais em uma instituição de ensino regional.", en: "A field study on curriculum adaptation and real inclusive practices in a regional school." },
     tags: ["Psicologia Escolar", "Neurodiversidade", "Pesquisa de Campo"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -472,17 +361,9 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Metodologia & Etapas de Campo", en: "Methodology & Field Stages" },
       architecture: [
-        { title: { pt: "Reestruturação e Mapeamento de Campo", en: "Restructuring and Field Mapping" }, bullets: [
-          { pt: "Direcionamento do estudo pra uma instituição privada reconhecida como referência regional em práticas inclusivas.", en: "Study redirected to a private school recognized as a regional benchmark for inclusive practices." },
-          { pt: "Coleta de dados via observação e entrevistas com alunos, docentes e equipe pedagógica.", en: "Data collection via observation and interviews with students, teachers, and pedagogical staff." },
-        ]},
-        { title: { pt: "Ações de Intervenção e Sensibilização", en: "Intervention and Awareness Actions" }, bullets: [
-          { pt: "Rodas de conversa interativas sobre neurodiversidade, empatia e respeito às diferenças.", en: "Interactive discussion circles on neurodiversity, empathy, and respect for differences." },
-          { pt: "Espaço aberto de escuta pra que os próprios estudantes neurodivergentes expressassem suas percepções.", en: "Open listening space for neurodivergent students to express their own perceptions." },
-        ]},
-        { title: { pt: "Análise Crítica dos Resultados", en: "Critical Analysis of Results" }, bullets: [
-          { pt: "Identificação das divergências entre o discurso institucional e as resistências observadas no cotidiano.", en: "Identification of gaps between institutional discourse and the resistance observed day-to-day." },
-        ]},
+        { title: { pt: "Reestruturação e Mapeamento de Campo", en: "Restructuring and Field Mapping" }, bullets: [{ pt: "Direcionamento do estudo pra uma instituição privada reconhecida como referência regional em práticas inclusivas.", en: "Study redirected to a private school recognized as a regional benchmark for inclusive practices." }, { pt: "Coleta de dados via observação e entrevistas com alunos, docentes e equipe pedagógica.", en: "Data collection via observation and interviews with students, teachers, and pedagogical staff." }] },
+        { title: { pt: "Ações de Intervenção e Sensibilização", en: "Intervention and Awareness Actions" }, bullets: [{ pt: "Rodas de conversa interativas sobre neurodiversidade, empatia e respeito às diferenças.", en: "Interactive discussion circles on neurodiversity, empathy, and respect for differences." }, { pt: "Espaço aberto de escuta pra que os próprios estudantes neurodivergentes expressassem suas percepções.", en: "Open listening space for neurodivergent students to express their own perceptions." }] },
+        { title: { pt: "Análise Crítica dos Resultados", en: "Critical Analysis of Results" }, bullets: [{ pt: "Identificação das divergências entre o discurso institucional e as resistências observadas no cotidiano.", en: "Identification of gaps between institutional discourse and the resistance observed day-to-day." }] },
       ],
       impactLabel: { pt: "Impacto Acadêmico-Social & Contribuição Técnica", en: "Academic-Social Impact & Technical Contribution" },
       impact: [
@@ -495,12 +376,9 @@ export const projects: Project[] = [
   {
     slug: "acolhimento-ong-prj",
     track: "social",
-    image: drive("15bg315s7Q5saAZ5p626gXoVqtSUYJX0h"),
+    image: cover("acolhimento-ong-prj"),
     title: { pt: "Apoio Comunitário — Voluntariado (ONG PRJ Vamos Ajudar)", en: "Community Support — Volunteering (PRJ Vamos Ajudar NGO)" },
-    card: {
-      pt: "Atuação em projeto socioambiental no suporte e garantia de direitos para pessoas em situação de rua em Nova Iguaçu.",
-      en: "Involvement in a socio-environmental project supporting and upholding rights for people experiencing homelessness in Nova Iguaçu.",
-    },
+    card: { pt: "Atuação em projeto socioambiental no suporte e garantia de direitos para pessoas em situação de rua em Nova Iguaçu.", en: "Involvement in a socio-environmental project supporting and upholding rights for people experiencing homelessness in Nova Iguaçu." },
     tags: ["Ação Comunitária", "Direitos Humanos", "Economia Circular"],
     detail: {
       overviewLabel: { pt: "Visão Geral do Projeto", en: "Project Overview" },
@@ -518,17 +396,9 @@ export const projects: Project[] = [
       ],
       architectureLabel: { pt: "Metodologia & Eixos de Atuação", en: "Methodology & Focus Areas" },
       architecture: [
-        { title: { pt: "Garantia de Dignidade e Acolhimento Humanitário", en: "Dignity Assurance and Humanitarian Care" }, bullets: [
-          { pt: "Logística de distribuição de kits de higiene, roupas, cobertores, alimentação e insumos básicos.", en: "Logistics for distributing hygiene kits, clothing, blankets, food, and basic supplies." },
-          { pt: "Escuta qualificada e encaminhamento pra a rede socioassistencial e de garantia de direitos.", en: "Qualified listening and referral to the social support and rights-protection network." },
-        ]},
-        { title: { pt: "Financiamento Ecológico e Economia Circular", en: "Ecological Funding and Circular Economy" }, bullets: [
-          { pt: "Mapeamento e coleta de materiais recicláveis no território.", en: "Mapping and collection of recyclable materials in the territory." },
-          { pt: "Destinação adequada pra reciclagem, revertendo a renda gerada nas ações assistenciais.", en: "Proper allocation for recycling, with proceeds reinvested in the assistance programs." },
-        ]},
-        { title: { pt: "Realização de Oficinas", en: "Running Workshops" }, bullets: [
-          { pt: "Oficinas de arteterapia, barbearia social e rodas de conversa voltadas ao resgate da autoestima.", en: "Art therapy, social barbershop, and discussion circles aimed at restoring self-esteem." },
-        ]},
+        { title: { pt: "Garantia de Dignidade e Acolhimento Humanitário", en: "Dignity Assurance and Humanitarian Care" }, bullets: [{ pt: "Logística de distribuição de kits de higiene, roupas, cobertores, alimentação e insumos básicos.", en: "Logistics for distributing hygiene kits, clothing, blankets, food, and basic supplies." }, { pt: "Escuta qualificada e encaminhamento pra a rede socioassistencial e de garantia de direitos.", en: "Qualified listening and referral to the social support and rights-protection network." }] },
+        { title: { pt: "Financiamento Ecológico e Economia Circular", en: "Ecological Funding and Circular Economy" }, bullets: [{ pt: "Mapeamento e coleta de materiais recicláveis no território.", en: "Mapping and collection of recyclable materials in the territory." }, { pt: "Destinação adequada pra reciclagem, revertendo a renda gerada nas ações assistenciais.", en: "Proper allocation for recycling, with proceeds reinvested in the assistance programs." }] },
+        { title: { pt: "Realização de Oficinas", en: "Running Workshops" }, bullets: [{ pt: "Oficinas de arteterapia, barbearia social e rodas de conversa voltadas ao resgate da autoestima.", en: "Art therapy, social barbershop, and discussion circles aimed at restoring self-esteem." }] },
       ],
       impactLabel: { pt: "Impacto Socioambiental & Ganhos Comunitários", en: "Socio-Environmental Impact & Community Gains" },
       impact: [
