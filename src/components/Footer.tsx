@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { useLang } from "../context/LanguageContext";
-import CopyEmail from "./CopyEmail";
 
 export default function Footer() {
   const { t } = useLang();
@@ -14,10 +13,6 @@ export default function Footer() {
           <FooterLink to="/sobre">{t("Sobre", "About")}</FooterLink>
           <FooterLink to="/projetos">{t("Projetos", "Projects")}</FooterLink>
           <FooterLink to="/contato">{t("Contato", "Contact")}</FooterLink>
-          <a href="https://www.linkedin.com/in/viv-mota/" target="_blank" rel="noopener noreferrer" className="text-sm text-[#C8C5BF] hover:text-[#F4EFE6] transition-colors">
-            LinkedIn
-          </a>
-          <CopyEmail email="motaviv@gmail.com" className="text-sm text-[#C8C5BF] hover:text-[#F4EFE6] transition-colors" />
         </nav>
         <p className="text-xs text-[#5F5E5A] font-mono" style={{ fontFamily: "'DM Mono', monospace" }}>
           © {new Date().getFullYear()} {t("Portfólio", "Portfolio")}
