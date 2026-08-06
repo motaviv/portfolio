@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useLang } from "../context/LanguageContext";
 import Reveal from "../components/Reveal";
 
-const profilePhotoUrl = "https://drive.google.com/uc?export=view&id=1Ev8wlW354XMyfs2lYccvQPRcy1xKxKTJ";
+const profilePhotoUrl = "/images/profile.jpg";
 
 type AccordionItem = { titlePT: string; titleEN: string; summaryPT: string; summaryEN: string; respPT: string; respEN: string; resultsPT: string; resultsEN: string; };
 
