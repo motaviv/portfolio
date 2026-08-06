@@ -23,7 +23,7 @@ function ChatAvatar({ size = 32 }: { size?: number }) {
   return (
     <div className="rounded-full bg-[#F4EFE6]/20 flex items-center justify-center overflow-hidden shrink-0" style={{ width: size, height: size }}>
       {!imgFailed ? (
-        <img src="/assets/avatar-viv.jpg" alt="Viv" className="w-full h-full object-cover" onError={() => setImgFailed(true)} />
+        <img src="/images/avatar-viv.jpg" alt="Viv" className="w-full h-full object-cover" onError={() => setImgFailed(true)} />
       ) : (
         <span className="text-sm font-semibold" style={{ fontFamily: "'Playfair Display', serif" }}>V</span>
       )}
@@ -43,16 +43,11 @@ function TypingBubble() {
   );
 }
 
-// Botão de pergunta que desaparece com animação de altura/opacidade ao ser respondido.
-// "removing" fica true por REMOVE_MS antes de a pergunta sumir de vez da lista (ver askQuestion).
 function QuestionButton({ q, removing, onClick }: { q: ChatQuestion; removing: boolean; onClick: () => void }) {
   return (
     <div style={{ display: "grid", gridTemplateRows: removing ? "0fr" : "1fr", opacity: removing ? 0 : 1, transition: `grid-template-rows ${REMOVE_MS}ms ease, opacity ${REMOVE_MS}ms ease` }}>
       <div className="overflow-hidden">
-        <button
-          onClick={onClick}
-          className="w-full text-left text-sm px-3 py-2 mb-1.5 rounded-lg border border-[#C8C5BF]/60 bg-white/60 hover:bg-[#2B5545] hover:text-[#F4EFE6] hover:border-[#2B5545] text-[#2C2C2A] transition-colors"
-        >
+        <button onClick={onClick} className="w-full text-left text-sm px-3 py-2 mb-1.5 rounded-lg border border-[#C8C5BF]/60 bg-white/60 hover:bg-[#2B5545] hover:text-[#F4EFE6] hover:border-[#2B5545] text-[#2C2C2A] transition-colors">
           {q.question}
         </button>
       </div>
@@ -116,10 +111,8 @@ export default function Chat() {
   };
 
   const askQuestion = (q: ChatQuestion) => {
-    // 1) marca como "saindo" (dispara a animação de colapso do QuestionButton)
     setRemovingIds((prev) => new Set([...prev, q.id]));
     setMessages((prev) => [...prev, { role: "user", text: q.question }]);
-    // 2) só depois da animação acabar, remove de vez da lista de opções (marcando como respondida)
     setTimeout(() => setAnswered((prev) => new Set([...prev, q.id])), REMOVE_MS);
 
     setIsTyping(true);
@@ -150,13 +143,10 @@ export default function Chat() {
   };
 
   const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
-  // Pergunta some da lista assim que "answered"; durante o intervalo de REMOVE_MS ela ainda
-  // aparece aqui (só com removing=true), o que é o que permite a animação de saída tocar.
   const visibleQuestions = selectedProfile?.questions.filter((q) => !answered.has(q.id)) ?? [];
 
   return (
     <>
-      {/* Botão flutuante — pequeno por padrão, expande no hover revelando "Fale com a Viv" */}
       <button
         onClick={toggleChat}
         onMouseEnter={() => setButtonHover(true)}
@@ -164,11 +154,7 @@ export default function Chat() {
         aria-label={t("Abrir chat com a Viv", "Open chat with Viv")}
         aria-expanded={isOpen}
         className="fixed bottom-6 right-6 z-50 h-12 rounded-full bg-[#2B5545] text-[#F4EFE6] shadow-lg hover:bg-[#1e3d31] transition-all duration-300 flex items-center justify-start overflow-hidden"
-        style={{
-          width: buttonHover && !isOpen ? 168 : 48,
-          paddingLeft: buttonHover && !isOpen ? 14 : 12,
-          boxShadow: "0 4px 24px rgba(43,85,69,0.35)",
-        }}
+        style={{ width: buttonHover && !isOpen ? 168 : 48, paddingLeft: buttonHover && !isOpen ? 14 : 12, boxShadow: "0 4px 24px rgba(43,85,69,0.35)" }}
       >
         <span className="shrink-0 flex items-center justify-center w-6 h-6">
           {isOpen ? (
@@ -186,13 +172,8 @@ export default function Chat() {
         <div
           role="dialog"
           aria-label={t("Chat — Fale com a Viv", "Chat — Talk to Viv")}
-          className={`fixed z-50 flex flex-col bg-[#F4EFE6] border border-[#C8C5BF]/60 shadow-2xl overflow-hidden
-            ${isMobile ? "inset-0" : "bottom-24 right-6 w-[340px] max-w-[92vw] h-[480px] max-h-[75vh] rounded-2xl"}`}
-          style={{
-            opacity: animateIn ? 1 : 0,
-            transform: animateIn ? "translateY(0) scale(1)" : "translateY(16px) scale(0.96)",
-            transition: `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease`,
-          }}
+          className={`fixed z-50 flex flex-col bg-[#F4EFE6] border border-[#C8C5BF]/60 shadow-2xl overflow-hidden ${isMobile ? "inset-0" : "bottom-24 right-6 w-[340px] max-w-[92vw] h-[480px] max-h-[75vh] rounded-2xl"}`}
+          style={{ opacity: animateIn ? 1 : 0, transform: animateIn ? "translateY(0) scale(1)" : "translateY(16px) scale(0.96)", transition: `opacity ${TRANSITION_MS}ms ease, transform ${TRANSITION_MS}ms ease` }}
         >
           <div className="bg-[#2B5545] text-[#F4EFE6] px-4 py-3 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
@@ -241,9 +222,7 @@ export default function Chat() {
                 </div>
                 <div className="flex flex-col max-h-36 overflow-y-auto">
                   {visibleQuestions.length > 0 ? (
-                    visibleQuestions.map((q) => (
-                      <QuestionButton key={q.id} q={q} removing={removingIds.has(q.id)} onClick={() => askQuestion(q)} />
-                    ))
+                    visibleQuestions.map((q) => <QuestionButton key={q.id} q={q} removing={removingIds.has(q.id)} onClick={() => askQuestion(q)} />)
                   ) : (
                     <p className="text-xs text-[#5F5E5A] italic py-2">{t("Todas as perguntas desse perfil já foram respondidas.", "All questions for this profile have been answered.")}</p>
                   )}
