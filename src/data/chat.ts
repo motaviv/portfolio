@@ -72,7 +72,7 @@ export const chatDataPT: ChatData = {
         },
         {
           id: "rec_4",
-          question: "Você tem experiência na criação de sistemas?",
+          question: "Você tem experiência na criação de soluções digitais para processos?",
           answer:
             "Sim! Já criei desde vitrines virtuais interativas até um sistema de vendas por QR Code com controle de comissão e estoque para pontos de exposição física. Faço o mapeamento da jornada do usuário e desenvolvo a solução de ponta a ponta.",
           linkText: "Ver o sistema de vendas por QR Code",
@@ -97,7 +97,7 @@ export const chatDataPT: ChatData = {
           id: "psi_1",
           question: "O que te levou a escolher a Psicologia?",
           answer:
-            "Veio da percepção prática, no meu cotidiano na Baixada Fluminense, de que muitos dos limites enfrentados pelas pessoas não são falhas individuais — são barreiras sociais e estruturais. Escolhi a Psicologia para compreender essas dinâmicas e atuar na transformação dessas realidades.",
+            "Veio da percepção prática, no meu cotidiano na Baixada Fluminense, de que muitos dos limites enfrentados pelas pessoas não são falhas individuais: são barreiras sociais e estruturais. Escolhi a Psicologia para compreender essas dinâmicas e atuar na transformação dessas realidades.",
           linkText: "Ler minha história no Sobre",
           linkUrl: "/sobre",
         },
@@ -105,7 +105,7 @@ export const chatDataPT: ChatData = {
           id: "psi_2",
           question: "Qual é a sua abordagem teórica na Psicologia?",
           answer:
-            "Trânsito entre a Psicologia Histórico-Cultural e a Psicologia Crítica. Atento-me ao contexto social, raça, classe, gênero e interseccionalidade — priorizando a escuta ética, a garantia de direitos e a compreensão do indivíduo em relação ao seu território.",
+            "Gosto bastante da Psicologia Histórico-Cultural e da Psicologia Crítica. Sempre me atentei ao contexto social, raça, classe, gênero e interseccionalidade, priorizando a escuta ética, a garantia de direitos e a compreensão do indivíduo em relação ao seu território.",
           linkText: "Ver minha perspectiva no Sobre",
           linkUrl: "/sobre",
         },
@@ -113,7 +113,7 @@ export const chatDataPT: ChatData = {
           id: "psi_3",
           question: "Que tipo de pesquisa de campo você já realizou?",
           answer:
-            "Pesquisei a inclusão real de crianças neurodivergentes nas escolas e liderei um estudo de campo crítico sobre a rede de enfrentamento à violência contra a mulher, visitando o CEAM Queimados e a Casa Olga Benário.",
+            "Pesquisei a inclusão real de crianças neurodivergentes nas instituições de ensino, realizei um estudo de campo crítico sobre a rede de enfrentamento à violência contra a mulher, visitando o CEAM Vera Lúcia Pereira e articulando com movimentos sociais.",
           linkText: "Ver a pesquisa sobre violência de gênero",
           linkUrl: "/projetos/enfrentamento-violencia-mulher",
         },
@@ -121,7 +121,7 @@ export const chatDataPT: ChatData = {
           id: "psi_4",
           question: "Como foi sua experiência com projetos comunitários?",
           answer:
-            "Atuei como voluntária por 4 meses no centro de Nova Iguaçu com a ONG PRJ, apoiando pessoas em situação de rua — distribuindo kits de higiene, orientando sobre direitos, realizando oficinas comunitárias e incentivando a geração de renda via reciclagem.",
+            "Atuei como voluntária por 4 meses no centro de Nova Iguaçu com a ONG PRJ, apoiando pessoas em situação de rua — distribuindo kits de higiene, orientando sobre direitos, realizando oficinas comunitárias e participando da geração de renda via reciclagem.",
           linkText: "Ver a atuação comunitária",
           linkUrl: "/projetos/acolhimento-ong-prj",
         },
@@ -214,7 +214,7 @@ export const chatDataEN: ChatData = {
         },
         {
           id: "rec_4",
-          question: "Do you have experience building systems?",
+          question: "Do you have experience creating digital solutions for processes?",
           answer:
             "Yes! I've built everything from interactive virtual showcases to a QR-code sales system with commission and inventory control for physical display points. I map the user journey and build the solution end to end.",
           linkText: "See the QR-code sales system",
@@ -255,7 +255,7 @@ export const chatDataEN: ChatData = {
           id: "psi_3",
           question: "What kind of field research have you done?",
           answer:
-            "I've researched real inclusion for neurodivergent children in schools, and led a critical field study on the support network for women facing gender-based violence, visiting CEAM Queimados and Casa Olga Benário.",
+            "I've researched real inclusion for neurodivergent children in schools, and led a critical field study on the support network for women facing gender-based violence, visiting CEAM Vera Lúcia Pereira and engaging with social movements.",
           linkText: "See the gender-violence research",
           linkUrl: "/projetos/enfrentamento-violencia-mulher",
         },
