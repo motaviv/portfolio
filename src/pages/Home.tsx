@@ -5,7 +5,7 @@ import { projects } from "../data/projects";
 import Reveal from "../components/Reveal";
 import Counter from "../components/Counter";
 
-const profilePhotoUrl = "https://drive.google.com/uc?export=view&id=1Ev8wlW354XMyfs2lYccvQPRcy1xKxKTJ";
+const profilePhotoUrl = "/images/profile.jpg";
 
 const nasaComunica = projects.find((p) => p.slug === "nasa-comunica")!;
 const qrCode = projects.find((p) => p.slug === "sistema-qr-code-vendas")!;
@@ -20,7 +20,7 @@ const testimonials = [
     name: "Diana Santos",
     role: { pt: "Diretora de RH", en: "HR Director" },
     linkedin: "https://www.linkedin.com/in/diana-patricia-dos-santos/",
-    photo: "https://drive.google.com/uc?export=view&id=1mhALoV-HEz5xMnSi57JrFlVxHQeyvYpb",
+    photo: "/images/testimonials/diana-santos.jpg",
     quote: {
       pt: "Vivian, trabalhar com você foi uma experiência incrível. Você é muito responsável, ética e extremamente organizada. Muitas empresas precisam conhecer o seu potencial. Continue com essa força e aprendendo. Você vai longe!",
       en: "Vivian, working with you was an incredible experience. You are very responsible, ethical, and extremely organized. Many companies need to know about your potential. Keep up that strength and keep learning — you'll go far!",
@@ -30,7 +30,7 @@ const testimonials = [
     name: "Micheli Moreira",
     role: { pt: "Gestora de Qualidade", en: "Quality Manager" },
     linkedin: "https://www.linkedin.com/in/micheli-moreira-41625735/",
-    photo: "https://drive.google.com/uc?export=view&id=1HnH5Bsk-q_k9DX-pEtPkLnez-b1rDzqY",
+    photo: "/images/testimonials/micheli-moreira.jpg",
     quote: {
       pt: "Vivian é uma profissional extremamente comprometida e dedicada, que não mede esforços para realizar suas entregas com eficiência. Cumpre prazos com consistência e demonstra uma busca contínua por evolução. Destaca-se também pela sua postura proativa: ao apresentar problemas, já traz consigo possíveis soluções, contribuindo de forma objetiva para a tomada de decisão. Trata-se de uma profissional que qualquer gestor orientado à qualidade das entregas teria grande satisfação em ter em sua equipe.",
       en: "Vivian is an extremely committed and dedicated professional who spares no effort to deliver her work efficiently. She meets deadlines consistently and shows a continuous drive to grow. She also stands out for her proactive approach: when raising a problem, she already brings possible solutions, contributing objectively to decision-making. She's the kind of professional any quality-driven manager would be glad to have on their team.",
@@ -86,7 +86,6 @@ function ProjectCard({ slug, image, title, card, tags, anchor, lang }: { slug: s
   );
 }
 
-// Carrossel de depoimentos: um por vez, troca automática a cada 7s, setas redondas com hover.
 function TestimonialCarousel({ lang }: { lang: "pt" | "en" }) {
   const [index, setIndex] = useState(0);
   const [photoFailed, setPhotoFailed] = useState<Record<number, boolean>>({});
@@ -104,7 +103,7 @@ function TestimonialCarousel({ lang }: { lang: "pt" | "en" }) {
 
   const go = (newIndex: number) => {
     setIndex((newIndex + testimonials.length) % testimonials.length);
-    startTimer(); // reinicia o contador quando a pessoa navega manualmente
+    startTimer();
   };
 
   const current = testimonials[index];
@@ -132,16 +131,12 @@ function TestimonialCarousel({ lang }: { lang: "pt" | "en" }) {
           </div>
         </div>
       </div>
-
-      {/* Setas redondas + indicadores */}
       <div className="flex items-center justify-center gap-4 mt-5">
         <button onClick={() => go(index - 1)} aria-label={lang === "pt" ? "Depoimento anterior" : "Previous testimonial"} className="w-9 h-9 rounded-full border border-[#C8C5BF]/60 text-[#2B5545] flex items-center justify-center hover:scale-110 hover:border-[#2B5545] hover:bg-white transition-all">
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="m15 18-6-6 6-6" /></svg>
         </button>
         <div className="flex gap-1.5">
-          {testimonials.map((_, i) => (
-            <button key={i} onClick={() => go(i)} aria-label={`${lang === "pt" ? "Ir para depoimento" : "Go to testimonial"} ${i + 1}`} className="w-1.5 h-1.5 rounded-full transition-all" style={{ backgroundColor: i === index ? "#2B5545" : "#C8C5BF" }} />
-          ))}
+          {testimonials.map((_, i) => <button key={i} onClick={() => go(i)} aria-label={`${lang === "pt" ? "Ir para depoimento" : "Go to testimonial"} ${i + 1}`} className="w-1.5 h-1.5 rounded-full transition-all" style={{ backgroundColor: i === index ? "#2B5545" : "#C8C5BF" }} />)}
         </div>
         <button onClick={() => go(index + 1)} aria-label={lang === "pt" ? "Próximo depoimento" : "Next testimonial"} className="w-9 h-9 rounded-full border border-[#C8C5BF]/60 text-[#2B5545] flex items-center justify-center hover:scale-110 hover:border-[#2B5545] hover:bg-white transition-all">
           <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}><path d="m9 18 6-6-6-6" /></svg>
@@ -294,3 +289,4 @@ export default function Home() {
     </main>
   );
 }
+
